@@ -1,7 +1,7 @@
 package com.stackexchangelite.app.di
 
 import androidx.lifecycle.ViewModelProvider
-import com.stackexchangelite.app.ui.viewmodels.ViewModelFactory
+import com.stackexchangelite.app.ui.viewmodels.ViewModelProviderFactory
 import dagger.Binds
 import dagger.Module
 
@@ -9,5 +9,5 @@ import dagger.Module
 abstract class ViewModelFactoryModule {
 
     @Binds
-    internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+    internal abstract fun bindViewModelFactory(factory: ViewModelProviderFactory): ViewModelProvider.Factory
 }
