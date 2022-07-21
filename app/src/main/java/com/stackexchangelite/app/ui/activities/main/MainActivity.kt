@@ -122,6 +122,7 @@ class MainActivity : DaggerAppCompatActivity(),
             }
             Resource.Status.ERROR -> {
                 Log.d(TAG, "setUIState: Failed to fetch data!")
+                questionsAdapter.notifyDataSetChanged()
                 progressLayout.visibility = View.GONE
                 errorLayout.visibility = View.VISIBLE
             }

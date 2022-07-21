@@ -1,5 +1,6 @@
 package com.stackexchangelite.app.ui.activities.main
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,6 +20,7 @@ class MainViewModel @Inject constructor(
     @NotNull private val mainApi: MainApi
 ) : ViewModel() {
 
+    private val TAG = "MainViewModel"
     private val welcome10Data = MutableLiveData<Resource<Welcome10>>()
 
     fun pullQuestions(pageNumber: Int) {
@@ -29,9 +31,11 @@ class MainViewModel @Inject constructor(
                 if (result.isSuccessful) {
                     result.body()?.let { welcome10Data.postValue(Resource.success(it)) }
                 } else {
+                    Log.d(TAG, "pullQuestions: Failed to fetch data" )
                     welcome10Data.postValue(Resource.error("Failed to fetch data", Welcome10()))
                 }
             } catch (exception: Exception) {
+                Log.e(TAG, "pullQuestions: ${exception.message}" )
                 welcome10Data.postValue(Resource.error("Failed to fetch data", Welcome10()))
             }
         }
