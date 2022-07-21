@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">StackExchangeLite</string>
+    <string name="questions">Questions</string>
+    <string name="prev">Prev</string>
+    <string name="next">Next</string>
+    <string name="question_title">Some Question Title</string>
+    <string name="question_date">07 Apr 2022 at 2:00 pm</string>
 </resources>

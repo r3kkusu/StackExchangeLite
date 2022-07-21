@@ -1,5 +1,6 @@
 package com.stackexchangelite.app.di
 
+import android.R
 import android.app.Application
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
@@ -22,6 +23,14 @@ class AppModule {
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideRequestOptions(): RequestOptions {
+        return RequestOptions
+            .placeholderOf(R.mipmap.sym_def_app_icon)
+            .error(R.mipmap.sym_def_app_icon)
     }
 
     @Singleton
