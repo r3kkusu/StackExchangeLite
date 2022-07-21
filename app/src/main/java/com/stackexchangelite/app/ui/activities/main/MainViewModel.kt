@@ -24,10 +24,14 @@ class MainViewModel @Inject constructor(
     fun pullQuestions(pageNumber: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             welcome10Data.postValue(Resource.loading(Welcome10()))
-            var result = mainApi.getQuestions(pageNumber, "desc", "activity", "stackoverflow")
-            if (result.isSuccessful) {
-                result.body()?.let { welcome10Data.postValue(Resource.success(it)) }
-            } else {
+            try {
+                var result = mainApi.getQuestions(pageNumber, "desc", "activity", "stackoverflow")
+                if (result.isSuccessful) {
+                    result.body()?.let { welcome10Data.postValue(Resource.success(it)) }
+                } else {
+                    welcome10Data.postValue(Resource.error("Failed to fetch data", Welcome10()))
+                }
+            } catch (exception: Exception) {
                 welcome10Data.postValue(Resource.error("Failed to fetch data", Welcome10()))
             }
         }

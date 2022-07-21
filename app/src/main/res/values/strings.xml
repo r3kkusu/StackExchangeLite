@@ -5,4 +5,6 @@
     <string name="next">Next</string>
     <string name="question_title">Some Question Title</string>
     <string name="question_date">07 Apr 2022 at 2:00 pm</string>
+    <string name="error">Error</string>
+    <string name="failed_to_fetch_data">Failed to fetch data!</string>
 </resources>
