@@ -113,7 +113,7 @@ class MainActivity : DaggerAppCompatActivity(),
                 progressLayout.visibility = View.VISIBLE
             }
             Resource.Status.SUCCESS -> {
-                Log.d(TAG, "setUIState: ${resource.data.items}")
+                Log.d(TAG, "setUIState: Fetched data ${resource.data.items}")
                 progressLayout.visibility = View.GONE
                 if (resource.data.items != null) {
                     questionsAdapter.updateQuestionList(resource.data.items)

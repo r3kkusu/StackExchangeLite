@@ -9,7 +9,7 @@ class DateUtils {
     companion object {
 
         val DATE_FORMAT_1 : String = "LLL dd, yyyy"
-        val DATE_FORMAT_2 : String = "dd LLL yyyy 'at' H:mm a"
+        val DATE_FORMAT_2 : String = "dd LLL yyyy 'at' h:mm a"
 
         @SuppressLint("SimpleDateFormat", "NewApi")
         fun format(epoch: Long, format: String): String {
