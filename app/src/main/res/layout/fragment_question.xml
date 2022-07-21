@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    tools:context=".ui.activities.main.detail.QuestionFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:background="@color/white">
+
+        <ImageButton
+            android:id="@+id/btn_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:contentDescription="@string/close"
+            android:minWidth="@dimen/dim_48dp"
+            android:minHeight="@dimen/dim_48dp"
+            android:src="@drawable/ic_baseline_cancel_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:tint="@color/black"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <!-- TODO: Update blank fragment layout -->
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/stub_title"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_user_avatar"
+                    android:layout_width="@dimen/dim_60dp"
+                    android:layout_height="@dimen/dim_60dp"
+                    android:padding="5dp"
+                    android:src="@mipmap/ic_launcher"
+                    app:civ_border_color="#FF000000"
+                    tools:ignore="ImageContrastCheck" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="6dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="6dp"
+                        android:paddingBottom="4dp"
+                        android:text="@string/stub_name"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_created_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="6dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="6dp"
+                        android:paddingBottom="4dp"
+                        android:text="@string/stub_date_2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_activity_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/stub_date_1"
+                android:textAlignment="textEnd"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

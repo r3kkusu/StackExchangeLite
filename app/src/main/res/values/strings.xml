@@ -3,8 +3,16 @@
     <string name="questions">Questions</string>
     <string name="prev">Prev</string>
     <string name="next">Next</string>
-    <string name="question_title">Some Question Title</string>
-    <string name="question_date">07 Apr 2022 at 2:00 pm</string>
     <string name="error">Error</string>
     <string name="failed_to_fetch_data">Failed to fetch data!</string>
+    <string name="close">Close</string>
+    <string name="asked">Asked</string>
+    <string name="last_active">Last Active</string>
+
+    <!--  STUB DATA  -->
+    <string name="stub_title">Some Question Title</string>
+    <string name="stub_description">Some question description</string>
+    <string name="stub_date_1">07 Apr 2022 at 2:00 pm</string>
+    <string name="stub_date_2">Jun 9, 2022</string>
+    <string name="stub_name">Adam Savage</string>
 </resources>

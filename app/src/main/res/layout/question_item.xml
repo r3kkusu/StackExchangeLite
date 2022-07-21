@@ -35,7 +35,7 @@
             android:maxLines="1"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:text="@string/question_title"
+            android:text="@string/stub_title"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:text="@string/question_date" />
+            android:text="@string/stub_date_1" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

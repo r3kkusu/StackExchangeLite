@@ -15,13 +15,19 @@ import com.stackexchangelite.app.R
 import com.stackexchangelite.app.data.model.Item
 import com.stackexchangelite.app.data.model.Welcome10
 import com.stackexchangelite.app.ui.activities.Resource
+import com.stackexchangelite.app.ui.activities.UIFragmentWindowEvents
+import com.stackexchangelite.app.ui.activities.main.detail.QuestionFragment
 import com.stackexchangelite.app.ui.adapter.QuestionsAdapter
 import com.stackexchangelite.app.ui.adapter.QuestionsAdapterEvents
 import com.stackexchangelite.app.ui.viewmodels.ViewModelProviderFactory
+import com.stackexchangelite.app.utils.AnimationUtils
+import com.stackexchangelite.app.utils.AppUtils
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-class MainActivity : DaggerAppCompatActivity(), View.OnClickListener {
+class MainActivity : DaggerAppCompatActivity(),
+    View.OnClickListener,
+    UIFragmentWindowEvents {
 
     private val TAG = "MainActivity"
 
@@ -33,6 +39,9 @@ class MainActivity : DaggerAppCompatActivity(), View.OnClickListener {
 
     @BindView(R.id.layout_error)
     lateinit var errorLayout: FrameLayout
+
+    @BindView(R.id.layout_dialog)
+    lateinit var dialogLayout: FrameLayout
 
     @BindView(R.id.btn_prev)
     lateinit var btnPrev: TextView
@@ -59,9 +68,9 @@ class MainActivity : DaggerAppCompatActivity(), View.OnClickListener {
     }
 
     private fun init() {
-
         questionsAdapter = QuestionsAdapter(object : QuestionsAdapterEvents {
             override fun onItemSelect(item: Item) {
+                openQuestionFragment(item)
             }
         }, requestManager)
 
@@ -117,5 +126,21 @@ class MainActivity : DaggerAppCompatActivity(), View.OnClickListener {
                 errorLayout.visibility = View.VISIBLE
             }
         }
+    }
+
+    fun openQuestionFragment(item: Item) {
+        if (dialogLayout.visibility != View.VISIBLE)
+            AppUtils.replaceFragment(this, QuestionFragment(this, requestManager, item),
+                AnimationUtils.ANIM_FADE_IN, R.id.layout_dialog)
+    }
+
+    override fun onWindowOpen() {
+        Log.d(TAG, "onWindowOpen: ")
+        dialogLayout.visibility = View.VISIBLE
+    }
+
+    override fun onWindowClosed() {
+        Log.d(TAG, "onWindowClosed: ")
+        dialogLayout.visibility =  View.GONE
     }
 }

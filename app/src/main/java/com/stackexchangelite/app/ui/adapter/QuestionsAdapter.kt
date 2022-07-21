@@ -1,5 +1,7 @@
 package com.stackexchangelite.app.ui.adapter
 
+import android.annotation.SuppressLint
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,7 @@ import butterknife.ButterKnife
 import com.bumptech.glide.RequestManager
 import com.stackexchangelite.app.R
 import com.stackexchangelite.app.data.model.Item
+import com.stackexchangelite.app.utils.DateUtils
 import de.hdodenhof.circleimageview.CircleImageView
 import javax.inject.Inject
 
@@ -49,13 +52,16 @@ class QuestionsAdapter constructor(
         return QuestionHolder(inflate)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: QuestionHolder, position: Int) {
         val question = questionsList[position];
 
         requestManager.load(question.owner.profileImage).into(holder.itemAvatar)
 
+        val view = holder.itemView
+
         holder.itemTitle.text = question.title
-        holder.itemDate.text = question.creationDate.toString()
+        holder.itemDate.text = "${view.context.getString(R.string.last_active)}: ${DateUtils.format(question.lastActivityDate, DateUtils.DATE_FORMAT_2)}"
 
         holder.itemRoot.setOnClickListener {
             listener.onItemSelect(question)
