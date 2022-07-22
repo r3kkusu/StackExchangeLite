@@ -2,6 +2,7 @@ package com.stackexchangelite.app.ui.activities.main.detail
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,8 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.bumptech.glide.RequestManager
@@ -19,6 +22,7 @@ import com.stackexchangelite.app.ui.activities.UIFragmentWindowEvents
 import com.stackexchangelite.app.utils.DateUtils
 import dagger.android.support.DaggerFragment
 import de.hdodenhof.circleimageview.CircleImageView
+
 
 class QuestionFragment constructor(
     private val windowsListener: UIFragmentWindowEvents?,
@@ -44,6 +48,9 @@ class QuestionFragment constructor(
     @BindView(R.id.img_user_avatar)
     lateinit var userAvatar: CircleImageView
 
+    @BindView(R.id.layout_container)
+    lateinit var layoutContainer : ConstraintLayout
+
     constructor() : this(null, null, null)
 
     override fun onAttach(context: Context) {
@@ -68,6 +75,13 @@ class QuestionFragment constructor(
         super.onViewCreated(view, savedInstanceState)
 
         ButterKnife.bind(this, view)
+
+        // Adjust theme change
+        val nightModeFlags = view.context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
+            layoutContainer.setBackgroundColor(ContextCompat.getColor(view.context, R.color.black_light))
+            btnClose.setColorFilter(ContextCompat.getColor(view.context, R.color.white))
+        }
 
         val animation: Animation = AnimationUtils.loadAnimation(activity, R.anim.fade_out)
         animation.duration = resources.getInteger(android.R.integer.config_shortAnimTime).toLong()
