@@ -93,12 +93,18 @@ class QuestionFragment constructor(
             view.startAnimation(animation)
         }
 
-        if (item != null) {
+        if (item != null && requestManager != null) {
+
             txtTitle.text = item.title
             txtUsername.text = item.owner.displayName
-            txtCreatedDate.text = "${getString(R.string.asked)}: ${DateUtils.format(item.creationDate, DateUtils.DATE_FORMAT_1)}"
-            txtActivityDate.text = "${getString(R.string.last_active)}: ${DateUtils.format(item.lastActivityDate, DateUtils.DATE_FORMAT_2)}"
-            requestManager?.load(item.owner.profileImage)?.into(userAvatar)
+
+            val createdDate = "${getString(R.string.asked)}: ${DateUtils.format(item.creationDate, DateUtils.DATE_FORMAT_1)}"
+            val lastActive = "${getString(R.string.last_active)}: ${DateUtils.format(item.lastActivityDate, DateUtils.DATE_FORMAT_2)}"
+
+            txtCreatedDate.text = createdDate
+            txtActivityDate.text = lastActive
+
+            requestManager.load(item.owner.profileImage).into(userAvatar)
         }
     }
 }
